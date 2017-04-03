@@ -4,9 +4,10 @@ base = new Airtable(apiKey: 'keya5owBYIn0zRzxP').base('app2PLtM6KVLhzhrJ')
 
 getStdin()
 .then (updateData) ->
+  updateDate = JSON.parse updateData
   base('Bugs & Issues').update(
     updateData.record,
-    { 'Assigned to': updateData.assignTo },
+    { 'Assigned to': [updateData.assignTo] },
     (err, record) ->
       if err
         console.error err
